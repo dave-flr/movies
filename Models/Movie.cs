@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace movies.Models
 {
-    public class User
+    public class Movie
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public string Title { get; set; }
+        public string Year { get; set; }
+        public string Type { get; set; }
+        public int Rating { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }
