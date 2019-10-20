@@ -1,0 +1,14 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "Website build with ASP.NET Core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Flores",
+  "license": "MIT",
+  "dependencies": {
+    "fomantic-ui-css": "^2.7.8"
+  }
+}

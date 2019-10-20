@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - movies</title>
+    @*
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/lib/node_modules/fomantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <div class="ui fixed inverted menu">
+            <div class="ui container">
+                <a class="active item">
+                    Home
+                </a>
+                <a class="item">
+                    Messages
+                </a>
+                <a class="item">
+                    Friends
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="ui inverted vertical footer center aligned segment">
+            <div class="ui container">
+                <h5 class="display-4">David Flores</h5>
+                <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/node_modules/fomantic-ui-css/semantic.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
