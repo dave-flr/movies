@@ -35,12 +35,17 @@ namespace movies.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(5);
 
+                    b.Property<int>("TvId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
+
+                    b.HasIndex("TvId");
 
                     b.HasIndex("UserId");
 
@@ -53,6 +58,16 @@ namespace movies.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("varchar(900)")
+                        .HasMaxLength(900);
+
+                    b.Property<string>("Overview")
+                        .IsRequired()
+                        .HasColumnType("varchar(900)")
+                        .HasMaxLength(900);
+
                     b.Property<int>("Rating")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -63,11 +78,6 @@ namespace movies.Migrations
                         .HasColumnType("varchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("varchar(15)")
-                        .HasMaxLength(15);
-
                     b.Property<string>("Year")
                         .IsRequired()
                         .HasColumnType("varchar(15)")
@@ -76,6 +86,42 @@ namespace movies.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("movies.Models.Tv", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("varchar(900)")
+                        .HasMaxLength(900);
+
+                    b.Property<string>("Overview")
+                        .IsRequired()
+                        .HasColumnType("varchar(900)")
+                        .HasMaxLength(900);
+
+                    b.Property<int>("Rating")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)")
+                        .HasMaxLength(15);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tv");
                 });
 
             modelBuilder.Entity("movies.Models.User", b =>
@@ -109,6 +155,12 @@ namespace movies.Migrations
                     b.HasOne("movies.Models.Movie", "Movie")
                         .WithMany("Comments")
                         .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("movies.Models.Tv", "Tv")
+                        .WithMany("Comments")
+                        .HasForeignKey("TvId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

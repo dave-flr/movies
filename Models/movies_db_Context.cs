@@ -5,8 +5,10 @@ namespace movies.Models
     public class movies_db_Context : DbContext
     {
         public movies_db_Context(DbContextOptions<movies_db_Context> options) :
-        base(options)
-        { }
+            base(options)
+        {
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -34,12 +36,31 @@ namespace movies.Models
                 b.Property<string>("Year")
                     .IsRequired()
                     .HasMaxLength(15);
-                b.Property<string>("Type")
+                b.Property<string>("Overview")
+                    .IsRequired()
+                    .HasMaxLength(900);
+                b.Property<int>("Rating")
+                    .HasDefaultValue(0);
+                b.Property<string>("ImagePath")
+                    .IsRequired()
+                    .HasMaxLength(900);
+            });
+            modelBuilder.Entity("movies.Models.Tv", b =>
+            {
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasMaxLength(100);
+                b.Property<string>("Year")
                     .IsRequired()
                     .HasMaxLength(15);
-                b.Property<int>("Rating")
+                b.Property<string>("Overview")
                     .IsRequired()
-                   .HasDefaultValue(0);
+                    .HasMaxLength(900);
+                b.Property<int>("Rating")
+                    .HasDefaultValue(0);
+                b.Property<string>("ImagePath")
+                    .IsRequired()
+                    .HasMaxLength(900);
             });
             modelBuilder.Entity("movies.Models.Comment", b =>
             {
@@ -48,7 +69,7 @@ namespace movies.Models
                     .HasMaxLength(250);
                 b.Property<int>("Rating")
                     .IsRequired()
-                   .HasDefaultValue(5);
+                    .HasDefaultValue(5);
             });
         }
     }

@@ -6443,11 +6443,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Dave\\Documents\\DotNetCore\\movies\\movies.csproj",
+      "projectUniqueName": "C:\\Users\\Dave\\Documents\\DotNetCore\\movies\\movies.csproj",
       "projectName": "movies",
-      "projectPath": "c:\\Users\\Dave\\Documents\\DotNetCore\\movies\\movies.csproj",
+      "projectPath": "C:\\Users\\Dave\\Documents\\DotNetCore\\movies\\movies.csproj",
       "packagesPath": "C:\\Users\\Dave\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Dave\\Documents\\DotNetCore\\movies\\obj\\",
+      "outputPath": "C:\\Users\\Dave\\Documents\\DotNetCore\\movies\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dave\\AppData\\Roaming\\NuGet\\NuGet.Config",
