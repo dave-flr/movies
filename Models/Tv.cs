@@ -11,5 +11,10 @@ namespace movies.Models
         public int Rating { get; set; }
         public string ImagePath { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public Tv()
+        {
+            Comments = new List<Comment>();
+        }
     }
 }

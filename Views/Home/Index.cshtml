@@ -1,7 +1,19 @@
-﻿@{
+﻿@model movies.ViewModels.HomeModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@await Html.PartialAsync("Carousel", @Model.CarouselMovies.TakeLast(20))
+<div class="ui container">
+    <div class="ui stackable grid container-">
+        <div class="twelve wide column">
+            @await Html.PartialAsync("Movies", @Model.ListMovies.Take(50))
+        </div>
+        <div class="four wide column">
+            @await Html.PartialAsync("RecentComments", @Model.LastComments)
+        </div>
+    </div>
+</div>
 
 <h1>Bienvenido</h1>
 <h1>Bienvenido</h1>

@@ -15,5 +15,10 @@ namespace movies.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public User()
+        {
+            Comments = new List<Comment>();
+        }
     }
 }

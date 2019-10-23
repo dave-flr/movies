@@ -3,36 +3,49 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $('.cards').slick({
-        lazyLoad: 'ondemand',
+    $('.carousel-cards').slick({
         // dots: false,
         infinite: true,
         speed: 500,
         // slidesToShow: 5,
         // slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 1500,
+        autoplaySpeed: 2000,
         mobileFirst: true,
         responsive: [{
-                breakpoint: 1024,
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false
+            }
+        },
+            {
+                breakpoint: 768,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
+                    slidesToShow: 4,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 380,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 320,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
             }
@@ -55,5 +68,5 @@ $(document).ready(function () {
     });
     //Rating
     $('.ui.rating')
-        .rating('disable');
+        .rating();
 });

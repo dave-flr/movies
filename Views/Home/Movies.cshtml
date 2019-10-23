@@ -1,16 +1,16 @@
-﻿@model IEnumerable<movies.Models.Movie>
+@model IEnumerable<movies.Models.Movie>
 
-<div class="ui container">
-    <div class="ui cards carousel-cards">
+<div class="ui raised inverted segment movie-segment">
+    <div class="ui cards">
         @foreach (var movie in @Model)
         {
-            <div class="ui card ml-1" style="width: 205px;">
+            <div class="ui card ml-1" style="width: 154px;">
                 <div class="image">
-                    <img src="@("https://image.tmdb.org/t/p/w200" + @movie.ImagePath)" class="visible content" style="height: 180px;">
+                    <img src="@("https://image.tmdb.org/t/p/w154" + @movie.ImagePath)" class="visible content" style="height: 180px;" alt="">
                 </div>
                 <div class="content">
                     <a class="header" data-tooltip="@movie.Title" data-position="bottom right" data-inverted="">
-                        @movie.Title.Substring(0, Math.Min(movie.Title.Length, 14))
+                        @movie.Title.Substring(0, Math.Min(movie.Title.Length, 20))
                     </a>
                     <div class="meta">
                         <span class="date">@movie.Year</span>
@@ -19,6 +19,10 @@
                 <div class="extra content">
                     Rating:
                     <div class="ui yellow disabled rating" data-rating="@movie.Rating" data-max-rating="5"></div>
+                    <div>
+                        <i class="comment icon"></i> Comments: @movie.Comments.Count
+                    </div>
+
                 </div>
             </div>
         }

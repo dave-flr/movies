@@ -70,6 +70,9 @@ namespace movies.Models
                 b.Property<int>("Rating")
                     .IsRequired()
                     .HasDefaultValue(5);
+                b.Property<string>("Date")
+                    .IsRequired()
+                    .HasMaxLength(250);
             });
         }
     }

@@ -13,6 +13,7 @@ namespace movies.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public int Rating { get; set; }
+        public string Date { get; set; }
         public int MovieId { get; set; }
         public Movie Movie { get; set; }
         public int TvId { get; set; }

@@ -68,7 +68,10 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-color: currentColor;
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /*.footer {*/
@@ -84,5 +87,10 @@ body {
 }
 
 .ml-1 {
-  margin-left: 0.3rem !important;
+  margin-left: 0.4rem !important;
+}
+
+.movie-segment{
+  margin-left: -0.7rem !important;
+  margin-right: -0.6rem !important;
 }
