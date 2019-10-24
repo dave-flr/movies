@@ -69,4 +69,21 @@ $(document).ready(function () {
     //Rating
     $('.ui.rating')
         .rating();
+    //Search input
+    $('.ui.search')
+        .search({
+            apiSettings: {
+                url: '/Home/SearchMovie/?query={query}'
+            },
+            fields: {
+                title: 'title',
+                description: 'year'
+                // url: 'id'
+            },
+            minCharacters: 3,
+            maxResults: 6,
+            cache: true,
+            ignoreDiacritics: true
+        })
+    ;
 });

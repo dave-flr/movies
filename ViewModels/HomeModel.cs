@@ -5,8 +5,9 @@ namespace movies.ViewModels
 {
     public class HomeModel
     {
-        public List<Movie> CarouselMovies { get; set; }
-        public List<Movie> ListMovies { get; set; }
+        public List<Movies> CarouselMovies { get; set; }
+        public List<Movies> ListMovies { get; set; }
         public List<Comment> LastComments { get; set; }
+        public PaginationModel PaginationModel { get; set; }
     }
 }

@@ -3,35 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace movies.Migrations
 {
-    public partial class ModelsCreated : Migration
+    public partial class RebuildDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "UserName",
-                table: "Users",
-                maxLength: 36,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "longtext",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Users",
-                maxLength: 40,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "longtext",
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Password",
-                table: "Users",
-                maxLength: 16,
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.CreateTable(
                 name: "Movies",
                 columns: table => new
@@ -40,12 +15,29 @@ namespace movies.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 100, nullable: false),
                     Year = table.Column<string>(maxLength: 15, nullable: false),
-                    Type = table.Column<string>(maxLength: 15, nullable: false),
-                    Rating = table.Column<int>(nullable: false, defaultValue: 0)
+                    Overview = table.Column<string>(maxLength: 1000, nullable: false),
+                    Rating = table.Column<int>(nullable: false, defaultValue: 0),
+                    ImagePath = table.Column<string>(maxLength: 900, nullable: false),
+                    Type = table.Column<string>(maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 40, nullable: false),
+                    UserName = table.Column<string>(maxLength: 36, nullable: false),
+                    Password = table.Column<string>(maxLength: 16, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,18 +48,20 @@ namespace movies.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(maxLength: 250, nullable: false),
                     Rating = table.Column<int>(nullable: false, defaultValue: 5),
+                    Date = table.Column<string>(maxLength: 20, nullable: false),
                     MovieId = table.Column<int>(nullable: false),
+                    MoviesId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Movies_MovieId",
-                        column: x => x.MovieId,
+                        name: "FK_Comments_Movies_MoviesId",
+                        column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserId",
                         column: x => x.UserId,
@@ -77,9 +71,9 @@ namespace movies.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_MovieId",
+                name: "IX_Comments_MoviesId",
                 table: "Comments",
-                column: "MovieId");
+                column: "MoviesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
@@ -95,25 +89,8 @@ namespace movies.Migrations
             migrationBuilder.DropTable(
                 name: "Movies");
 
-            migrationBuilder.DropColumn(
-                name: "Password",
-                table: "Users");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "UserName",
-                table: "Users",
-                type: "longtext",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldMaxLength: 36);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Users",
-                type: "longtext",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldMaxLength: 40);
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

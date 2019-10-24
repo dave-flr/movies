@@ -12,31 +12,25 @@
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
         <e p="HomeController.cs" t="Include" />
+        <e p="MovieController.cs" t="Include" />
       </e>
       <e p="Migrations" t="Include">
-        <e p="20191020065234_First Migration.cs" t="Include" />
-        <e p="20191020065234_First Migration.Designer.cs" t="Include" />
-        <e p="20191020212340_Models Created.cs" t="Include" />
-        <e p="20191020212340_Models Created.Designer.cs" t="Include" />
-        <e p="20191021063004_Added Overview to Movies Table.cs" t="Include" />
-        <e p="20191021063004_Added Overview to Movies Table.Designer.cs" t="Include" />
-        <e p="20191021224510_Added Image Path to the Objects and Created de Tv Table.cs" t="Include" />
-        <e p="20191021224510_Added Image Path to the Objects and Created de Tv Table.Designer.cs" t="Include" />
-        <e p="20191022033200_Remove Required Rating.cs" t="Include" />
-        <e p="20191022033200_Remove Required Rating.Designer.cs" t="Include" />
-        <e p="20191022224817_Added date and hour field to Comments table.cs" t="Include" />
-        <e p="20191022224817_Added date and hour field to Comments table.Designer.cs" t="Include" />
-        <e p="movies_db_ContextModelSnapshot.cs" t="Include" />
+        <e p="20191023045730_Rebuild DB.cs" t="Include" />
+        <e p="20191023045730_Rebuild DB.Designer.cs" t="Include" />
+        <e p="20191023050851_Merged Tv with Movie Table.cs" t="Include" />
+        <e p="20191023050851_Merged Tv with Movie Table.Designer.cs" t="Include" />
+        <e p="MoviesDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
         <e p="Comment.cs" t="Include" />
         <e p="ErrorViewModel.cs" t="Include" />
-        <e p="Movie.cs" t="Include" />
-        <e p="movies_db_Context.cs" t="Include" />
-        <e p="Tv.cs" t="Include" />
+        <e p="Movies.cs" t="Include" />
+        <e p="MoviesDbContext.cs" t="Include" />
+        <e p="PaginationModel.cs" t="Include" />
         <e p="User.cs" t="Include" />
       </e>
       <e p="movies.csproj" t="IncludeRecursive" />
+      <e p="movies_db_movies.sql" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp3.0" t="Include">
@@ -61,8 +55,12 @@
           <e p="Carousel.cshtml" t="Include" />
           <e p="Index.cshtml" t="Include" />
           <e p="Movies.cshtml" t="Include" />
+          <e p="PaginationMenu.cshtml" t="Include" />
           <e p="Privacy.cshtml" t="Include" />
           <e p="RecentComments.cshtml" t="Include" />
+        </e>
+        <e p="Movie" t="Include">
+          <e p="Movie.cshtml" t="Include" />
         </e>
         <e p="Shared" t="Include">
           <e p="_Layout.cshtml" t="Include" />

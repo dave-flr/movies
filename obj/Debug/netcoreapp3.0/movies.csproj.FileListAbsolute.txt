@@ -363,3 +363,4 @@ C:\Users\Dave\Documents\DotNetCore\movies\bin\Debug\netcoreapp3.0\Microsoft.Enti
 C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\Carousel.cshtml.g.cs
 c:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\Movies.cshtml.g.cs
 C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\RecentComments.cshtml.g.cs
+C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\PaginationMenu.cshtml.g.cs

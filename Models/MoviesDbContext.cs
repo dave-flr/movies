@@ -2,15 +2,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace movies.Models
 {
-    public class movies_db_Context : DbContext
+    public class MoviesDbContext : DbContext
     {
-        public movies_db_Context(DbContextOptions<movies_db_Context> options) :
+        public MoviesDbContext(DbContextOptions<MoviesDbContext> options) :
             base(options)
         {
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Movies> Movies { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace movies.Models
                     .HasMaxLength(16);
             });
 
-            modelBuilder.Entity("movies.Models.Movie", b =>
+            modelBuilder.Entity("movies.Models.Movies", b =>
             {
                 b.Property<string>("Title")
                     .IsRequired()
@@ -38,29 +38,15 @@ namespace movies.Models
                     .HasMaxLength(15);
                 b.Property<string>("Overview")
                     .IsRequired()
-                    .HasMaxLength(900);
+                    .HasMaxLength(1000);
                 b.Property<int>("Rating")
                     .HasDefaultValue(0);
                 b.Property<string>("ImagePath")
                     .IsRequired()
                     .HasMaxLength(900);
-            });
-            modelBuilder.Entity("movies.Models.Tv", b =>
-            {
-                b.Property<string>("Title")
+                b.Property<string>("Type")
                     .IsRequired()
-                    .HasMaxLength(100);
-                b.Property<string>("Year")
-                    .IsRequired()
-                    .HasMaxLength(15);
-                b.Property<string>("Overview")
-                    .IsRequired()
-                    .HasMaxLength(900);
-                b.Property<int>("Rating")
-                    .HasDefaultValue(0);
-                b.Property<string>("ImagePath")
-                    .IsRequired()
-                    .HasMaxLength(900);
+                    .HasMaxLength(20);
             });
             modelBuilder.Entity("movies.Models.Comment", b =>
             {
@@ -72,7 +58,7 @@ namespace movies.Models
                     .HasDefaultValue(5);
                 b.Property<string>("Date")
                     .IsRequired()
-                    .HasMaxLength(250);
+                    .HasMaxLength(20);
             });
         }
     }

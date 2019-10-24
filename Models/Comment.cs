@@ -14,10 +14,8 @@ namespace movies.Models
         public string Description { get; set; }
         public int Rating { get; set; }
         public string Date { get; set; }
-        public int MovieId { get; set; }
-        public Movie Movie { get; set; }
-        public int TvId { get; set; }
-        public Tv Tv { get; set; }
+        public int MoviesId { get; set; }
+        public Movies Movies { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
     }

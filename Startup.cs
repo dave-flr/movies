@@ -30,7 +30,7 @@ namespace movies
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 
-            services.AddDbContext<movies_db_Context>(
+            services.AddDbContext<MoviesDbContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("AppDBContextString"))
             );
         }

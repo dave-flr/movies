@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace movies.Models
 {
-    public class Tv
+    public class Movies
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -10,9 +16,10 @@ namespace movies.Models
         public string Overview { get; set; }
         public int Rating { get; set; }
         public string ImagePath { get; set; }
+        public string Type { get; set; }
         public List<Comment> Comments { get; set; }
 
-        public Tv()
+        public Movies()
         {
             Comments = new List<Comment>();
         }

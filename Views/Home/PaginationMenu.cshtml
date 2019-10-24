@@ -1,0 +1,45 @@
+﻿@model movies.Models.PaginationModel
+@{
+    var totalPages = (int) Math.Ceiling((double) Model.TotalMovies / Model.MoviesPerPage);
+}
+
+@{
+    var first = 1;
+    const int radio = 3;
+    const int maxPagesValue = radio * 2 + 1;
+    var last = (totalPages > maxPagesValue) ? maxPagesValue : totalPages;
+
+    if (Model.ActualPage > radio + 1)
+    {
+        first = Model.ActualPage - radio;
+        if (totalPages > Model.ActualPage + radio)
+        {
+            last = Model.ActualPage + radio;
+        }
+        else
+        {
+            last = totalPages;
+        }
+    }
+}
+<div class="ui center aligned container">
+    <div class="ui pagination menu">
+        <a class="item" asp-action="Index" asp-controller="Home" asp-route-page="1">
+            First
+        </a>
+        @for (int i = first; i <= last; i++)
+        {
+            if (i == Model.ActualPage)
+            {
+                <a class="active item" asp-action="Index" asp-controller="Home" asp-route-page="@i"> @i.ToString() </a>
+            }
+            else
+            {
+                <a class="item" asp-action="Index" asp-controller="Home" asp-route-page="@i"> @i.ToString() </a>
+            }
+        }
+        <a class="item" asp-action="Index" asp-controller="Home" asp-route-page="@totalPages">
+            Last
+        </a>
+    </div>
+</div>

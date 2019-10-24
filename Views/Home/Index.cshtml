@@ -7,7 +7,8 @@
 <div class="ui container">
     <div class="ui stackable grid container-">
         <div class="twelve wide column">
-            @await Html.PartialAsync("Movies", @Model.ListMovies.Take(50))
+            @await Html.PartialAsync("Movies", @Model.ListMovies)
+            @await Html.PartialAsync("PaginationMenu", @Model.PaginationModel)
         </div>
         <div class="four wide column">
             @await Html.PartialAsync("RecentComments", @Model.LastComments)

@@ -7,9 +7,9 @@ using movies.Models;
 
 namespace movies.Migrations
 {
-    [DbContext(typeof(movies_db_Context))]
-    [Migration("20191022224817_Added date and hour field to Comments table")]
-    partial class AddeddateandhourfieldtoCommentstable
+    [DbContext(typeof(MoviesDbContext))]
+    [Migration("20191023050851_Merged Tv with Movie Table")]
+    partial class MergedTvwithMovieTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,15 +26,15 @@ namespace movies.Migrations
 
                     b.Property<string>("Date")
                         .IsRequired()
-                        .HasColumnType("varchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<int>("MovieId")
+                    b.Property<int>("MoviesId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -42,24 +42,19 @@ namespace movies.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(5);
 
-                    b.Property<int>("TvId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
-
-                    b.HasIndex("TvId");
+                    b.HasIndex("MoviesId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("movies.Models.Movie", b =>
+            modelBuilder.Entity("movies.Models.Movies", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,8 +67,8 @@ namespace movies.Migrations
 
                     b.Property<string>("Overview")
                         .IsRequired()
-                        .HasColumnType("varchar(900)")
-                        .HasMaxLength(900);
+                        .HasColumnType("varchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<int>("Rating")
                         .ValueGeneratedOnAdd()
@@ -84,6 +79,11 @@ namespace movies.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)")
                         .HasMaxLength(100);
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Year")
                         .IsRequired()
@@ -93,42 +93,6 @@ namespace movies.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("movies.Models.Tv", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("varchar(900)")
-                        .HasMaxLength(900);
-
-                    b.Property<string>("Overview")
-                        .IsRequired()
-                        .HasColumnType("varchar(900)")
-                        .HasMaxLength(900);
-
-                    b.Property<int>("Rating")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("varchar(15)")
-                        .HasMaxLength(15);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tv");
                 });
 
             modelBuilder.Entity("movies.Models.User", b =>
@@ -159,15 +123,9 @@ namespace movies.Migrations
 
             modelBuilder.Entity("movies.Models.Comment", b =>
                 {
-                    b.HasOne("movies.Models.Movie", "Movie")
+                    b.HasOne("movies.Models.Movies", "Movies")
                         .WithMany("Comments")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("movies.Models.Tv", "Tv")
-                        .WithMany("Comments")
-                        .HasForeignKey("TvId")
+                        .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
