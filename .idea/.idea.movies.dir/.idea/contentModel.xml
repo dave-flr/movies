@@ -9,6 +9,25 @@
     <e p="C:\Users\Dave\Documents\DotNetCore\movies" t="IncludeRecursive">
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
+      <e p="Areas" t="Include">
+        <e p="Identity" t="Include">
+          <e p="IdentityHostingStartup.cs" t="Include" />
+          <e p="Pages" t="Include">
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="_ViewImports.cshtml" t="Include" />
+            <e p="_ViewStart.cshtml" t="Include" />
+            <e p="Account" t="Include">
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="Login.cshtml" t="Include" />
+              <e p="Login.cshtml.cs" t="Include" />
+              <e p="Logout.cshtml" t="Include" />
+              <e p="Logout.cshtml.cs" t="Include" />
+              <e p="Register.cshtml" t="Include" />
+              <e p="Register.cshtml.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
         <e p="HomeController.cs" t="Include" />
@@ -21,6 +40,8 @@
         <e p="20191023050851_Merged Tv with Movie Table.Designer.cs" t="Include" />
         <e p="20191028043909_Date row to 50 chrs.cs" t="Include" />
         <e p="20191028043909_Date row to 50 chrs.Designer.cs" t="Include" />
+        <e p="20191029035652_CreateIdentitySchema.cs" t="Include" />
+        <e p="20191029035652_CreateIdentitySchema.Designer.cs" t="Include" />
         <e p="MoviesDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
@@ -45,6 +66,7 @@
       <e p="Properties" t="Include">
         <e p="launchSettings.json" t="Include" />
       </e>
+      <e p="ScaffoldingReadme.txt" t="Include" />
       <e p="sql.sql" t="Include" />
       <e p="Startup.cs" t="Include" />
       <e p="ViewModels" t="Include">
@@ -65,7 +87,9 @@
           <e p="Movie.cshtml" t="Include" />
         </e>
         <e p="Shared" t="Include">
+          <e p="_CookieConsentPartial.cshtml" t="Include" />
           <e p="_Layout.cshtml" t="Include" />
+          <e p="_LoginPartial.cshtml" t="Include" />
           <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           <e p="Error.cshtml" t="Include" />
         </e>

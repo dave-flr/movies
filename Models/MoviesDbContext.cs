@@ -1,20 +1,22 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace movies.Models
 {
-    public class MoviesDbContext : DbContext
+    public class MoviesDbContext : IdentityDbContext
     {
         public MoviesDbContext(DbContextOptions<MoviesDbContext> options) :
             base(options)
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public new DbSet<User> Users { get; set; }
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity("movies.Models.User", b =>
             {
                 b.Property<string>("Name")
