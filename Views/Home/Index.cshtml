@@ -11,7 +11,7 @@
             @await Html.PartialAsync("PaginationMenu", @Model.PaginationModel)
         </div>
         <div class="four wide column">
-            @await Html.PartialAsync("RecentComments", @Model.LastComments)
+            @await Html.PartialAsync("RecentComments", @Model.LastComments.TakeLast(5))
         </div>
     </div>
 </div>

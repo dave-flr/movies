@@ -19,6 +19,8 @@
         <e p="20191023045730_Rebuild DB.Designer.cs" t="Include" />
         <e p="20191023050851_Merged Tv with Movie Table.cs" t="Include" />
         <e p="20191023050851_Merged Tv with Movie Table.Designer.cs" t="Include" />
+        <e p="20191028043909_Date row to 50 chrs.cs" t="Include" />
+        <e p="20191028043909_Date row to 50 chrs.Designer.cs" t="Include" />
         <e p="MoviesDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
@@ -72,6 +74,7 @@
         <e p="css" t="Include">
           <e p="header.css" t="Include" />
           <e p="site.css" t="Include" />
+          <e p="spacing.css" t="Include" />
         </e>
         <e p="favicon.ico" t="Include" />
         <e p="img" t="Include">

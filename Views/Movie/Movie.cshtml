@@ -1,2 +1,76 @@
 ﻿@model movies.Models.Movies
 
+<div class="ui container">
+    <div class="ui raised inverted segment mb-3">
+        <div class="ui inverted items">
+            <div class="item">
+                <div class="ui image">
+                    <img src="@("https://image.tmdb.org/t/p/w200" + @Model.ImagePath)" class="visible content" alt="">
+                </div>
+                <div class="content">
+                    <div class="header">
+                        @Model.Title
+                    </div>
+                    <div class="meta">
+                        <span>Fecha de esteno: @Model.Year</span>
+                    </div>
+                    <div class="description">
+                        <p>@Model.Overview</p>
+                    </div>
+                    <div class="extra">
+                        Rating:
+                        <div class="ui yellow disabled large rating" data-rating="@Model.Rating" data-max-rating="5"></div>
+                        <div class="ui right floated button" id="comment">
+                            <i class="comment icon"></i>Comentar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui inverted segment mb-3">
+        <div class="ui inverted threaded comments">
+            <h3 class="ui inverted dividing header">Comentarios</h3>
+            @foreach (var comment in @Model.Comments)
+            {
+                <div class="comment">
+                    <a class="avatar">
+                        @* <img src="/images/avatar/small/stevie.jpg"> *@
+                        <i class="user icon"></i>
+                    </a>
+                    <div class="content">
+                        <a class="author">@comment.User.Name</a>
+                        <div class="metadata">
+                            <div class="date">@comment.Date</div>
+                            <div class="rating">
+                                <i class="star icon"></i>
+                                @comment.Rating Estrellas
+                            </div>
+                        </div>
+                        <div class="text">
+                            @comment.Description
+                        </div>
+                    </div>
+                </div>
+            }
+            <form class="ui reply form" asp-controller="Movie" asp-action="Comment" method="post">
+                <div class="field">
+                    <textarea id="Description" name="Description"></textarea>
+                    <input type="hidden" id="MoviesId" name="MoviesId" value="@Model.Id">
+                    <input type="hidden" id="UserId" name="UserId" value="1"> @*Temporalmente = 1*@
+                    <div>
+                        Valoración:
+                        <div class="ui yellow large rating pt-3" id="RatingInput" data-icon="star" data-rating="0" data-max-rating="5"></div>
+                    </div>
+                    <input type="hidden" id="Rating" name="Rating" value="-1">
+                </div>
+                <button class="ui labeled icon button" type="submit" id="makeNewComment">
+                    <i class="comments icon"></i>
+                    Publicar
+                </button>
+                <div class="ui error message"></div>
+            </form>
+        </div>
+    </div>
+</div>

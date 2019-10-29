@@ -9,7 +9,7 @@
                     <img src="@("https://image.tmdb.org/t/p/w200" + @movie.ImagePath)" class="visible content" style="height: 180px;">
                 </div>
                 <div class="content">
-                    <a class="header" data-tooltip="@movie.Title" data-position="bottom right" data-inverted="">
+                    <a asp-controller="Movie" asp-action="Id" asp-route-Id="@movie.Id" class="header" data-tooltip="@movie.Title" data-position="bottom right" data-inverted="">
                         @movie.Title.Substring(0, Math.Min(movie.Title.Length, 14))
                     </a>
                     <div class="meta">

@@ -1,28 +1,29 @@
 ﻿@model IEnumerable<movies.Models.Comment>
 
 <div class="ui inverted segment">
-    <div class="ui inverted feed">
+    <div class="ui inverted comments">
+        <h3 class="ui dividing inverted header">Últimos Comentarios</h3>
         @foreach (var comment in @Model)
         {
-            <div class="event">
-                <div class="label">
-                    @* <img src="/images/avatar/small/elliot.jpg"> *@
+            <div class="comment">
+                <a class="avatar">
+                    @* <img src="/images/avatar/small/matt.jpg"> *@
                     <i class="user icon"></i>
-                </div>
+                </a>
                 <div class="content">
-                    <div class="date">
-                        On: @comment.Date
+                    <a class="author">@comment.User.UserName</a>
+                    <div class="metadata">
+                        <span class="date">@comment.Date</span>
                     </div>
-                    <div class="summary">
-                        <a class="user">
-                            @comment.User.UserName
-                        </a> comentó:
-                    </div>
-                    <div class="extra text">
+                    <div class="text">
                         @comment.Description
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
                     </div>
                 </div>
             </div>
+            <div class="ui divider"></div>
         }
     </div>
 </div>

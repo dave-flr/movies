@@ -73,17 +73,55 @@ $(document).ready(function () {
     $('.ui.search')
         .search({
             apiSettings: {
+                onResponse: function (data) {
+                    var response = {results: []};
+                    $.each(data, function (index, item) {
+                        var id = item.id || 'Unknown';
+                        item['url'] = "http://localhost:5000/Movie/Id/" + id;
+                        response.results.push(item);
+                    });
+                    return response;
+                },
                 url: '/Home/SearchMovie/?query={query}'
             },
             fields: {
                 title: 'title',
-                description: 'year'
-                // url: 'id'
+                description: 'year',
+                url: 'url'
             },
             minCharacters: 3,
             maxResults: 6,
             cache: true,
-            ignoreDiacritics: true
+            ignoreDiacritics: true,
+            debug: false,
+            selectFirstResult: true
         })
     ;
+    $('.ui.reply.form').hide();
+    $('#comment').on('click', function (e) {
+        $('.ui.reply.form').show();
+    });
+    $('.ui.form').form({
+        fields: {
+            description: {
+                identifier: 'Description',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Por favor ingresa una opinión'
+                }]
+            },
+            rating: {
+                identifier: 'Rating',
+                rules: [{
+                    type: 'integer[1..5]',
+                    prompt: 'Por favor agrega una valoración a la Película'
+                }]
+            }
+        }
+    });
+    $('#RatingInput').rating({
+        onRate: function (v) {
+            $('#Rating').val(v);
+        }
+    });
 });

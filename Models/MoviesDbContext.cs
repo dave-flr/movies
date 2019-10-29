@@ -58,7 +58,7 @@ namespace movies.Models
                     .HasDefaultValue(5);
                 b.Property<string>("Date")
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
             });
         }
     }

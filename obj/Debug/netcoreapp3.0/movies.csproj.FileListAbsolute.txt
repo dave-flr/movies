@@ -364,3 +364,4 @@ C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Ho
 c:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\Movies.cshtml.g.cs
 C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\RecentComments.cshtml.g.cs
 C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Home\PaginationMenu.cshtml.g.cs
+C:\Users\Dave\Documents\DotNetCore\movies\obj\Debug\netcoreapp3.0\Razor\Views\Movie\Movie.cshtml.g.cs
