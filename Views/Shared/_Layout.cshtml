@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -53,14 +57,30 @@
                         <div class="results"></div>
                     </div>
                 </div>
-                <div class="nav-item">
-                    <button class="ui inverted blue button">Login</button>
-                </div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="nav-item">
+                        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                    </div>
+                    <div class="nav-item">
+                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
+                            <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="nav-item">
+                        <a class="ui inverted blue button" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="ui blue button" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </header>
-                    <partial name="_LoginPartial"></partial>    
 
 <div class="container-">
     <main role="main" class="pb-3">
