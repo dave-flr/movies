@@ -32,11 +32,6 @@ namespace movies
             services.AddDbContext<MoviesDbContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("AppDBContextString"))
             );
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                // services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<MoviesDbContext>()
-                .AddDefaultTokenProviders();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,11 +46,11 @@ namespace movies
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseRouting();
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+//            app.UseHttpsRedirection();
+            app.UseSta ticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

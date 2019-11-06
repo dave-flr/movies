@@ -124,81 +124,88 @@ $(document).ready(function () {
             $('#Rating').val(v);
         }
     });
-    // $('#account')
-    //     .form({
-    //         fields: {
-    //             email: {
-    //                 identifier: 'Input_Email',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'Please enter your e-mail'
-    //                     },
-    //                     {
-    //                         type: 'email',
-    //                         prompt: 'Please enter a valid e-mail'
-    //                     }
-    //                 ]
-    //             },
-    //             password: {
-    //                 identifier: 'Input_Password',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'Please enter your password'
-    //                     },
-    //                     {
-    //                         type: 'length[6]',
-    //                         prompt: 'Your password must be at least 6 characters'
-    //                     }
-    //                 ]
-    //             }
-    //         }
-    //     })
-    // ;
-    // $('#registerForm')
-    //     .form({
-    //         fields: {
-    //             email: {
-    //                 identifier: 'Input_Email',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'Please enter your e-mail'
-    //                     },
-    //                     {
-    //                         type: 'email',
-    //                         prompt: 'Please enter a valid e-mail'
-    //                     }
-    //                 ]
-    //             },
-    //             confirm_password: {
-    //                 identifier: 'Input_Password',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'Please enter your password'
-    //                     },
-    //                     {
-    //                         type: 'length[6]',
-    //                         prompt: 'Your password must be at least 6 characters'
-    //                     }
-    //                 ]
-    //             },
-    //             password: {
-    //                 identifier: 'Input_ConfirmPassword',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'Please enter your password'
-    //                     },
-    //                     {
-    //                         type: 'length[6]',
-    //                         prompt: 'Your password must be at least 6 characters'
-    //                     }
-    //                 ]
-    //             }
-    //         }
-    //     })
-    // ;
+    $('#userDropdown')
+        .dropdown()
+        .transition('horizontal flip in')
+    ;
+    $('#logoutItem').on('click', function () {
+       $('#logoutForm').submit()
+    }); 
+    $('#account')
+        .form({
+            fields: {
+                email: {
+                    identifier: 'Input_Email',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter your e-mail'
+                        },
+                        {
+                            type: 'email',
+                            prompt: 'Please enter a valid e-mail'
+                        }
+                    ]
+                },
+                password: {
+                    identifier: 'Input_Password',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter your password'
+                        },
+                        {
+                            type: 'length[6]',
+                            prompt: 'Your password must be at least 6 characters'
+                        }
+                    ]
+                }
+            }
+        })
+    ;
+    $('#registerForm')
+        .form({
+            fields: {
+                email: {
+                    identifier: 'Input_Email',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter your e-mail'
+                        },
+                        {
+                            type: 'email',
+                            prompt: 'Please enter a valid e-mail'
+                        }
+                    ]
+                },
+                confirm_password: {
+                    identifier: 'Input_Password',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter your password'
+                        },
+                        {
+                            type: 'length[6]',
+                            prompt: 'Your password must be at least 6 characters'
+                        }
+                    ]
+                },
+                password: {
+                    identifier: 'Input_ConfirmPassword',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter your password'
+                        },
+                        {
+                            type: 'length[6]',
+                            prompt: 'Your password must be at least 6 characters'
+                        }
+                    ]
+                }
+            }
+        })
+    ;
 });

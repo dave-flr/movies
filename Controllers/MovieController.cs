@@ -43,7 +43,6 @@ namespace movies.Controllers
 
             await _db.SaveChangesAsync();
             return View("Movie", movie);
-//            return RedirectToAction(Id(comment.MoviesId));
         }
 
         private async Task<Movies> FindMovie(int? id) //Find a movie with the given id
