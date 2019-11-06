@@ -47,12 +47,17 @@ namespace movies
             }
 
 //            app.UseHttpsRedirection();
-            app.UseSta ticFiles();
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Dashboard",
+                    pattern: "{area:Dashboard}/{controller=Admin}/{action=Index}/{id?}"
+                );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
