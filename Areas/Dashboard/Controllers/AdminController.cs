@@ -8,6 +8,7 @@ namespace movies.Areas.Dashboard.Controllers
 {
     public class AdminController : Controller
     {
+        [Area("Dashboard")]
         public IActionResult Index()
         {
             

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace movies
 {
@@ -32,6 +33,14 @@ namespace movies
             services.AddDbContext<MoviesDbContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("AppDBContextString"))
             );
+
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.AreaViewLocationFormats.Clear();
+                options.AreaViewLocationFormats.Add("/Areas/{2}/Views/{0}.cshtml");
+                options.AreaViewLocationFormats.Add("/Areas/{2}/Views/Shared/{0}.cshtml");
+                options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +55,7 @@ namespace movies
                 app.UseExceptionHandler("/Home/Error");
             }
 
-//            app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
@@ -55,7 +64,7 @@ namespace movies
             {
                 endpoints.MapControllerRoute(
                     name: "Dashboard",
-                    pattern: "{area:Dashboard}/{controller=Admin}/{action=Index}/{id?}"
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
                 );
 
                 endpoints.MapControllerRoute(
