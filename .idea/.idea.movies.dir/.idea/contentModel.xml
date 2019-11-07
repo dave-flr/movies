@@ -10,6 +10,22 @@
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
       <e p="Areas" t="Include">
+        <e p="Dashboard" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="AdminController.cs" t="Include" />
+          </e>
+          <e p="Views" t="Include">
+            <e p="_ViewImports.cshtml" t="Include" />
+            <e p="_ViewStart.cshtml" t="Include" />
+            <e p="Admin" t="Include">
+              <e p="Index.cshtml" t="Include" />
+              <e p="Table.cshtml" t="Include" />
+            </e>
+            <e p="Shared" t="Include">
+              <e p="_Layout.cshtml" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Identity" t="Include">
           <e p="IdentityHostingStartup.cs" t="Include" />
           <e p="Pages" t="Include">
@@ -97,6 +113,7 @@
       <e p="wwwroot" t="Include">
         <e p="css" t="Include">
           <e p="header.css" t="Include" />
+          <e p="main.css" t="Include" />
           <e p="site.css" t="Include" />
           <e p="spacing.css" t="Include" />
         </e>
@@ -104,12 +121,99 @@
         <e p="img" t="Include">
           <e p="bg-header.jpg" t="Include" />
           <e p="bg.jpg" t="Include" />
+          <e p="logo.png" t="Include" />
           <e p="movieicon.png" t="Include" />
+          <e p="user.jpg" t="Include" />
         </e>
         <e p="js" t="Include">
+          <e p="main.js" t="Include" />
           <e p="site.js" t="Include" />
         </e>
         <e p="lib" t="Include">
+          <e p="chart.js" t="Include">
+            <e p="Chart.bundle.js" t="Include" />
+            <e p="Chart.bundle.min.js" t="Include" />
+            <e p="Chart.css" t="Include" />
+            <e p="Chart.example.js" t="Include" />
+            <e p="chart.js" t="Include" />
+            <e p="Chart.min.css" t="Include" />
+            <e p="Chart.min.js" t="Include" />
+            <e p="Chart.utils.js" t="Include" />
+          </e>
+          <e p="datatables.net" t="Include">
+            <e p="datatables.net-buttons" t="Include">
+              <e p="js" t="Include">
+                <e p="buttons.colVis.js" t="Include" />
+                <e p="buttons.colVis.min.js" t="Include" />
+                <e p="buttons.flash.js" t="Include" />
+                <e p="buttons.flash.min.js" t="Include" />
+                <e p="buttons.html5.js" t="Include" />
+                <e p="buttons.html5.min.js" t="Include" />
+                <e p="buttons.print.js" t="Include" />
+                <e p="buttons.print.min.js" t="Include" />
+                <e p="dataTables.buttons.js" t="Include" />
+                <e p="dataTables.buttons.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+              <e p="package.json" t="Include" />
+              <e p="README.md" t="Include" />
+              <e p="swf" t="Include">
+                <e p="flashExport.swf" t="Include" />
+              </e>
+            </e>
+            <e p="datatables.net-buttons-se" t="Include">
+              <e p="css" t="Include">
+                <e p="buttons.semanticui.css" t="Include" />
+                <e p="buttons.semanticui.min.css" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="buttons.semanticui.js" t="Include" />
+                <e p="buttons.semanticui.min.js" t="Include" />
+              </e>
+              <e p="package.json" t="Include" />
+              <e p="README.md" t="Include" />
+            </e>
+            <e p="datatables.net-responsive" t="Include">
+              <e p="js" t="Include">
+                <e p="dataTables.responsive.js" t="Include" />
+                <e p="dataTables.responsive.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+              <e p="package.json" t="Include" />
+              <e p="README.md" t="Include" />
+            </e>
+            <e p="datatables.net-responsive-se" t="Include">
+              <e p="css" t="Include">
+                <e p="responsive.semanticui.css" t="Include" />
+                <e p="responsive.semanticui.min.css" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="responsive.semanticui.js" t="Include" />
+                <e p="responsive.semanticui.min.js" t="Include" />
+              </e>
+              <e p="package.json" t="Include" />
+              <e p="README.md" t="Include" />
+            </e>
+            <e p="datatables.net-se" t="Include">
+              <e p="css" t="Include">
+                <e p="dataTables.semanticui.css" t="Include" />
+                <e p="dataTables.semanticui.min.css" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="dataTables.semanticui.js" t="Include" />
+                <e p="dataTables.semanticui.min.js" t="Include" />
+              </e>
+              <e p="package.json" t="Include" />
+              <e p="README.md" t="Include" />
+            </e>
+            <e p="js" t="Include">
+              <e p="jquery.dataTables.js" t="Include" />
+              <e p="jquery.dataTables.min.js" t="Include" />
+            </e>
+            <e p="LICENSE.txt" t="Include" />
+            <e p="package.json" t="Include" />
+            <e p="README.md" t="Include" />
+          </e>
           <e p="fomantic-ui-css" t="Include">
             <e p="components" t="Include">
               <e p="accordion.css" t="Include" />
@@ -504,8 +608,19 @@
               <e p="wrap.js" t="Include" />
             </e>
           </e>
+          <e p="jszip" t="Include">
+            <e p="jszip.js" t="Include" />
+            <e p="jszip.min.js" t="Include" />
+          </e>
           <e p="package-lock.json" t="Include" />
           <e p="package.json" t="Include" />
+          <e p="pdfmake" t="Include">
+            <e p="pdfmake.js" t="Include" />
+            <e p="pdfmake.js.map" t="Include" />
+            <e p="pdfmake.min.js" t="Include" />
+            <e p="pdfmake.min.js.map" t="Include" />
+            <e p="vfs_fonts.js" t="Include" />
+          </e>
           <e p="slick" t="Include">
             <e p="ajax-loader.gif" t="Include" />
             <e p="config.rb" t="Include" />

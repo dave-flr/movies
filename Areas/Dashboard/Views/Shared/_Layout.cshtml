@@ -1,0 +1,55 @@
+﻿@* @page *@
+@* @model movies.Areas.Dashboard.Views.Shared._Layout *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <meta name="robots" content="all,follow">
+    <title>Admin Panel</title>
+    <link rel="icon" href="~/img/logo.png" sizes="32x32">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/lib/fomantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="~/lib/datatables.net/datatables.net-se/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" href="~/lib/datatables.net/datatables.net-responsive-se/css/responsive.semanticui.min.css">
+    <link rel="stylesheet" href="~/lib/datatables.net/datatables.net-buttons-se/css/buttons.semanticui.min.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <!-- endinject -->
+</head>
+<body>
+<div>
+@RenderBody()
+</div>
+</body>
+<!-- inject:js -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/fomantic-ui-css/semantic.min.js"></script>
+<script src="~/lib/chart.js/Chart.min.js"></script>
+<script src="~/lib/chart.js/Chart.utils.js"></script>
+<script src="~/lib/chart.js/Chart.example.js"></script>
+<script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-se/js/dataTables.semanticui.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-responsive-se/js/responsive.semanticui.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="~/lib/datatables.net/datatables.net-buttons-se/js/buttons.semanticui.min.js"></script>
+<script src="~/lib/jszip/jszip.min.js"></script>
+<script src="~/lib/pdfmake/pdfmake.min.js"></script>
+<script src="~/lib/pdfmake/vfs_fonts.js"></script>
+<script src="~/js/main.js"></script>
+<!-- endinject -->
+<script>
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+</script>
+</html>

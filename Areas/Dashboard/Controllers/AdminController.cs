@@ -11,7 +11,12 @@ namespace movies.Areas.Dashboard.Controllers
         [Area("Dashboard")]
         public IActionResult Index()
         {
-            
+            return View();
+        }
+
+        [Area("Dashboard")]
+        public IActionResult Table()
+        {
             return View();
         }
     }

@@ -16,4 +16,76 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <_ResolveComReferenceCache Remove="obj\Debug\netcoreapp3.0\movies.csproj.ResolveComReference.cache" />
+      <_ResolveComReferenceCache Remove="obj\Debug\netcoreapp3.0\movies.csproj.ResolveComReference.cache" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <IntermediateAssembly Remove="obj\Debug\netcoreapp3.0\movies.dll" />
+      <IntermediateAssembly Remove="obj\Debug\netcoreapp3.0\movies.dll" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_DebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.0\movies.pdb" />
+      <_DebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.0\movies.pdb" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_DeploymentManifestEntryPoint Remove="obj\Debug\netcoreapp3.0\movies.dll" />
+      <_DeploymentManifestEntryPoint Remove="obj\Debug\netcoreapp3.0\movies.dll" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ApplicationManifest Remove="obj\Debug\netcoreapp3.0\movies.dll.manifest" />
+      <ApplicationManifest Remove="obj\Debug\netcoreapp3.0\movies.dll.manifest" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <DeployManifest Remove="obj\Debug\netcoreapp3.0\movies.application" />
+      <DeployManifest Remove="obj\Debug\netcoreapp3.0\movies.application" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ClsidMap Remove="obj\Debug\netcoreapp3.0\movies.clsidmap" />
+      <ClsidMap Remove="obj\Debug\netcoreapp3.0\movies.clsidmap" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <RegFreeComManifest Remove="obj\Debug\netcoreapp3.0\movies.X.manifest" />
+      <RegFreeComManifest Remove="obj\Debug\netcoreapp3.0\movies.X.manifest" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <RazorIntermediateAssembly Remove="obj\Debug\netcoreapp3.0\movies.Views.dll" />
+      <RazorIntermediateAssembly Remove="obj\Debug\netcoreapp3.0\movies.Views.dll" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_RazorDebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.0\movies.Views.pdb" />
+      <_RazorDebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.0\movies.Views.pdb" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <UpToDateCheckBuilt Remove="obj\Debug\netcoreapp3.0\movies.Views.dll" />
+      <UpToDateCheckBuilt Remove="obj\Debug\netcoreapp3.0\movies.Views.dll" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_RazorComponentDeclarationAssembly Remove="obj\Debug\netcoreapp3.0\RazorDeclaration\movies.dll" />
+      <_RazorComponentDeclarationAssembly Remove="obj\Debug\netcoreapp3.0\RazorDeclaration\movies.dll" />
+    </ItemGroup>
+
 </Project>
