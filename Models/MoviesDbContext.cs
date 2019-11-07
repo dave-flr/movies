@@ -10,25 +10,36 @@ namespace movies.Models
         {
         }
 
-        public new DbSet<User> Users { get; set; }
+//        public new DbSet<User> Users { get; set; }
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity("movies.Models.User", b =>
-            {
-                b.Property<string>("Name")
-                    .IsRequired()
-                    .HasMaxLength(40);
-                b.Property<string>("UserName")
-                    .IsRequired()
-                    .HasMaxLength(36);
-                b.Property<string>("Password")
-                    .IsRequired()
-                    .HasMaxLength(16);
-            });
+
+//            modelBuilder.Entity<User>()
+//                .HasKey(u => u.Id);
+
+//            modelBuilder.Entity<Comment>()
+//                .HasOne<User>(u => u.User)
+//                .WithMany(c => c.Comments)
+//                .HasForeignKey(k => k.UserId);
+                
+//            modelBuilder.Entity("movies.Models.User", b =>
+//            {
+//                b.Property<string>("Id")
+//                    .HasMaxLength(255);    
+//                b.Property<string>("Name")
+//                    .IsRequired()
+//                    .HasMaxLength(40);
+//                b.Property<string>("UserName")
+//                    .IsRequired()
+//                    .HasMaxLength(36);
+//                b.Property<string>("Password")
+//                    .IsRequired()
+//                    .HasMaxLength(16);
+//            });
 
             modelBuilder.Entity("movies.Models.Movies", b =>
             {
@@ -61,6 +72,9 @@ namespace movies.Models
                 b.Property<string>("Date")
                     .IsRequired()
                     .HasMaxLength(50);
+                b.Property<string>("UserId")
+                    .IsRequired()
+                    .HasMaxLength(255);
             });
         }
     }

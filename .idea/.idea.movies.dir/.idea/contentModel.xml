@@ -50,14 +50,8 @@
         <e p="MovieController.cs" t="Include" />
       </e>
       <e p="Migrations" t="Include">
-        <e p="20191023045730_Rebuild DB.cs" t="Include" />
-        <e p="20191023045730_Rebuild DB.Designer.cs" t="Include" />
-        <e p="20191023050851_Merged Tv with Movie Table.cs" t="Include" />
-        <e p="20191023050851_Merged Tv with Movie Table.Designer.cs" t="Include" />
-        <e p="20191028043909_Date row to 50 chrs.cs" t="Include" />
-        <e p="20191028043909_Date row to 50 chrs.Designer.cs" t="Include" />
-        <e p="20191029035652_CreateIdentitySchema.cs" t="Include" />
-        <e p="20191029035652_CreateIdentitySchema.Designer.cs" t="Include" />
+        <e p="20191107061518_Rebuild.cs" t="Include" />
+        <e p="20191107061518_Rebuild.Designer.cs" t="Include" />
         <e p="MoviesDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
@@ -66,7 +60,6 @@
         <e p="Movies.cs" t="Include" />
         <e p="MoviesDbContext.cs" t="Include" />
         <e p="PaginationModel.cs" t="Include" />
-        <e p="User.cs" t="Include" />
       </e>
       <e p="movies.csproj" t="IncludeRecursive" />
       <e p="movies_db_movies.sql" t="Include" />

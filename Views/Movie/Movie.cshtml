@@ -1,4 +1,8 @@
 ﻿@model movies.Models.Movies
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SingInManager
+@inject UserManager<IdentityUser> UserManager
 
 <div class="ui container">
     <div class="ui raised inverted segment mb-3">
@@ -40,7 +44,7 @@
                         <i class="user icon"></i>
                     </a>
                     <div class="content">
-                        <a class="author">@comment.User.Name</a>
+                        <a class="author">@comment.User.UserName</a>
                         <div class="metadata">
                             <div class="date">@comment.Date</div>
                             <div class="rating">
@@ -54,23 +58,49 @@
                     </div>
                 </div>
             }
-            <form class="ui reply form" asp-controller="Movie" asp-action="Comment" method="post">
-                <div class="field">
-                    <textarea id="Description" name="Description"></textarea>
-                    <input type="hidden" id="MoviesId" name="MoviesId" value="@Model.Id">
-                    <input type="hidden" id="UserId" name="UserId" value="1"> @*Temporalmente = 1*@
-                    <div>
-                        Valoración:
-                        <div class="ui yellow large rating pt-3" id="RatingInput" data-icon="star" data-rating="0" data-max-rating="5"></div>
+
+            @if (SingInManager.IsSignedIn(User))
+            {
+                <form class="ui reply form" asp-controller="Movie" asp-action="Comment" asp-route-returnMovieUrl="/Movie/Id/@Model.Id" method="post">
+                    <div class="field">
+                        <textarea id="Description" name="Description"></textarea>
+                        <input type="hidden" id="MoviesId" name="MoviesId" value="@Model.Id">
+                        <input type="hidden" id="UserId" name="UserId" value="@UserManager.GetUserId(User)">
+                        <div>
+                            Valoración:
+                            <div class="ui yellow large rating pt-3" id="RatingInput" data-icon="star" data-rating="0" data-max-rating="5"></div>
+                        </div>
+                        <input type="hidden" id="Rating" name="Rating" value="-1">
                     </div>
-                    <input type="hidden" id="Rating" name="Rating" value="-1">
-                </div>
-                <button class="ui labeled icon button" type="submit" id="makeNewComment">
-                    <i class="comments icon"></i>
-                    Publicar
-                </button>
-                <div class="ui error message"></div>
-            </form>
+                    <button class="ui labeled icon button" type="submit" id="makeNewComment">
+                        <i class="comments icon"></i>
+                        Publicar
+                    </button>
+                    <div class="ui error message"></div>
+                </form>
+            }
+            else
+            {
+                <form class="ui reply form" asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="/Movie/Id/@Model.Id" method="post">
+                    <div class="field">
+                        <textarea id="Description" name="Description">@ViewData["description"]</textarea>
+                        <input type="hidden" id="MoviesId" name="MoviesId" value="@Model.Id">
+                        <input type="hidden" id="UserId" name="UserId" value="@UserManager.GetUserId(User)">
+                        <div>
+                            Valoración:
+                            <div class="ui yellow large rating pt-3" id="RatingInput" data-icon="star" data-rating="0" data-max-rating="5"></div>
+                        </div>
+                        <input type="hidden" id="Rating" name="Rating" value="@ViewData["rating"]">
+                    </div>
+                    <button class="ui labeled icon button" type="submit" id="makeNewComment">
+                        <i class="comments icon"></i>
+                        Publicar
+                    </button>
+                    <div class="ui error message"></div>
+                </form>
+            }
+
+
         </div>
     </div>
 </div>

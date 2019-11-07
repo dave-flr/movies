@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movies.Models;
@@ -11,16 +12,20 @@ namespace movies.Controllers
     public class MovieController : Controller
     {
         private readonly MoviesDbContext _db;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public MovieController(MoviesDbContext db)
+        public MovieController(MoviesDbContext db, UserManager<IdentityUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Id(int? id) //Show a Movie
+        public async Task<IActionResult> Id(int? id, int? rating, string description = null) //Show a Movie
         {
             if (id == null) return NotFound();
+            ViewData["rating"] = rating;
+            ViewData["description"] = description;
             var movie = await FindMovie(id);
             return View("Movie", movie);
         }
@@ -28,21 +33,27 @@ namespace movies.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Comment(Comment comment)
+        public async Task<IActionResult> Comment(Comment comment, string returnMovieUrl = null)
         {
             if (!ModelState.IsValid) return NotFound();
+            returnMovieUrl ??= Url.Content("~/"); //local redirect
 
+            //Validate user id:
+            var user = await _userManager.GetUserAsync(User);
+            if (user.Id != comment.UserId) return NotFound();
+
+            //Add the comment
             comment.Date = DateTime.Now.ToString("d"); //Save the current date
-
             await _db.Comments.AddAsync(comment);
-            await _db.SaveChangesAsync(); 
-            
-            var movie = await FindMovie(comment.MoviesId);
-
-            movie.Rating = movie.Comments.Sum(rt => rt.Rating) / movie.Comments.Count; //Update the rating with every comment
-
             await _db.SaveChangesAsync();
-            return View("Movie", movie);
+
+            //Update the rating
+            var movie = await FindMovie(comment.MoviesId);
+            movie.Rating =
+                movie.Comments.Sum(rt => rt.Rating) / movie.Comments.Count; //Update the rating with every comment
+            await _db.SaveChangesAsync();
+
+            return LocalRedirect(returnMovieUrl);
         }
 
         private async Task<Movies> FindMovie(int? id) //Find a movie with the given id
