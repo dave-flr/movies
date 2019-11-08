@@ -1,3 +1,5 @@
+@model movies.Areas.Dashboard.ViewModels.AdminViewModel
+
 <!-- BEGIN CONTEN -->
 <div class="right floated thirteen wide computer sixteen wide phone column" id="content">
     <div class="ui container grid">
@@ -20,9 +22,9 @@
                                         </div>
                                         <div class="ten wide computer column">
                                             <span>
-                                                <h4>Page Views</h4>
+                                                <h4>Comments</h4>
                                             </span>
-                                            7120 Views
+                                            @Model.CommentsCount Comments
                                             <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
                                         </div>
                                     </div>
@@ -44,9 +46,9 @@
                                         </div>
                                         <div class="ten wide computer column">
                                             <span>
-                                                <h4>Messages</h4>
+                                                <h4>Movies</h4>
                                             </span>
-                                            2341 Messages
+                                            @Model.MoviesCount Movies
                                             <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
                                         </div>
                                     </div>
@@ -68,9 +70,9 @@
                                         </div>
                                         <div class="ten wide computer column">
                                             <span>
-                                                <h4>Downloads</h4>
+                                                <h4>Roles</h4>
                                             </span>
-                                            5541 Downloads
+                                            @Model.RolesCount Roles
                                             <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
                                         </div>
                                     </div>
@@ -94,7 +96,7 @@
                                             <span>
                                                 <h4>Users</h4>
                                             </span>
-                                            9578 Users
+                                            @Model.UserCount Users
                                             <a class="ui tiny label simplelable"><i class="eye icon"></i> Detailsa</a>
                                         </div>
                                     </div>

@@ -28,9 +28,16 @@ namespace movies.Areas.Dashboard.Controllers
 
         [Area("Dashboard")]
         [Authorize(Roles = "Admin, Editors")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var adminViewModel = new AdminViewModel
+            {
+                UserCount = await _userManager.Users.CountAsync(),
+                CommentsCount = await _db.Comments.CountAsync(),
+                MoviesCount = await _db.Movies.CountAsync(),
+                RolesCount = await _roleManager.Roles.CountAsync()
+            };
+            return View("Index", adminViewModel);
         }
 
         [Area("Dashboard")]
