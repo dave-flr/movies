@@ -129,8 +129,11 @@ $(document).ready(function () {
         .transition('horizontal flip in')
     ;
     $('#logoutItem').on('click', function () {
-       $('#logoutForm').submit()
-    }); 
+        $('#logoutForm').submit()
+    });
+    $('#dashboardItem').on('click', function () {
+        $('#dashboardForm').submit()
+    });
     $('#account')
         .form({
             fields: {
