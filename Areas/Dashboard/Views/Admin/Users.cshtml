@@ -1,0 +1,50 @@
+@model List<movies.Areas.Dashboard.ViewModels.UserListTable>
+
+<!-- BEGIN CONTENT -->
+<div class="right floated thirteen wide computer sixteen wide phone column" id="content">
+    <div class="ui container grid">
+        <div class="row">
+            <div class="fifteen wide computer sixteen wide phone centered column">
+                <h2><i class="table icon"></i> USER LIST </h2>
+                <div class="ui divider"></div>
+                <div class="ui grid">
+                    <div class="sixteen wide computer sixteen wide phone centered column">
+                        <h4></h4>
+                        <!-- BEGIN DATATABLE -->
+                        <div class="ui stacked segment">
+                            <div class="ui blue ribbon icon label">Export Tool</div>
+                            <br><br>
+                            <table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>User Name</th>
+                                    <th>Normalized User Name</th>
+                                    <th>Email</th>
+                                    <th>Email Confirmed</th>
+                                    <th>Coments</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var user in @Model)
+                                {
+                                    <tr>
+                                        <td>@user.Users.Id</td>
+                                        <td>@user.Users.UserName</td>
+                                        <td>@user.Users.NormalizedUserName</td>
+                                        <td>@user.Users.Email</td>
+                                        <td>@user.Users.EmailConfirmed</td>
+                                        <td>@user.CommentCount</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END DATATABLE -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT -->

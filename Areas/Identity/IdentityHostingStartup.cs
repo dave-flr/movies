@@ -22,6 +22,7 @@ namespace movies.Areas.Identity
                         context.Configuration.GetConnectionString("AppDBContextString")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<MoviesDbContext>();
             });
         }
