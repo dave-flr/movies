@@ -60,16 +60,24 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <div class="nav-item">
-                        <div class="ui right dropdown item" id="userDropdown" >
+                        <div class="ui right dropdown item" id="userDropdown">
                             <i class="ui user icon"></i> @UserManager.GetUserName(User)
                             <i class="dropdown icon"></i>
                             <div class="right menu">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="item" id="dashboardItem">
+                                        <form id="dashboardForm" class="form-inline" asp-area="Dashboard" asp-controller="Admin" asp-action="Index">
+                                            <i class="tachometer alternate icon"></i> Admin Panel
+                                        </form>
+                                    </div>
+                                }
                                 <div class="item" id="logoutItem">
                                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
-                                        @* <button id="logout" type="submit" class="ui danger fluid button">Logout</button> *@
                                         <i class="sign out alternate icon"></i> Logout
                                     </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
