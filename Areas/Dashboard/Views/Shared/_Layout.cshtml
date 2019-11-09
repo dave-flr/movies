@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -116,30 +122,14 @@
                         <a class="item" asp-area="Dashboard" asp-controller="Admin" asp-action="Users"><i class="user icon"></i> Users</a>
                         <div class="ui right pointing dropdown sidebardropdown link item">
                             <i class="angle right icon"></i>
-                            Apps
+                            Roles
                             <div class="menu">
-                                <a class="item">
-                                    <p><i class="instagram icon"></i> Instagram</p>
-                                </a>
-                                <a class="item">
-                                    <p><i class="telegram icon"></i> Telegram</p>
-                                </a>
-                                <a class="item">
-                                    <p><i class="whatsapp icon"></i> Whatsapp</p>
-                                </a>
-                                <a class="item">
-                                    <p><i class="steam icon"></i> Steam</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ui item">
-                            <div class="ui fluid selection dropdown moredropdown">
-                                <div class="text">Menu</div>
-                                <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <p class="item">Choice 1</p>
-                                    <p class="item">Choice 2</p>
-                                </div>
+                                @foreach (var rol in RoleManager.Roles.ToList())
+                                {
+                                    <a class="item">
+                                        <p><i class="users icon"></i> @rol.Name </p>
+                                    </a>    
+                                }
                             </div>
                         </div>
                         <a class="item"><i class="settings icon"></i> Settings</a>
@@ -173,7 +163,7 @@
 <script src="~/lib/jszip/jszip.min.js"></script>
 <script src="~/lib/pdfmake/pdfmake.min.js"></script>
 <script src="~/lib/pdfmake/vfs_fonts.js"></script>
-<script src="~/js/main.js"></script>
+<script src="~/js/main.js" asp-append-version="true"></script>
 <!-- endinject -->
 <script>
 $('.message .close')

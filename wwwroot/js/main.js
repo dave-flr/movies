@@ -43,4 +43,28 @@ $(document).ready(function () {
     });
     table.buttons().container()
         .appendTo($('div.eight.column:eq(0)', table.table().container()));
+    //FORMS
+    $('#createRolFom').form({
+        fields: {
+            rolName: {
+                identifier: 'rolName',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: 'Please enter a rol name'
+                    }
+                ]
+            }
+        }
+    });
+    //MODALS
+    $('#showRolesModal').on('click', function () {
+        $('#addRolesModal')
+            .modal('setting', 'closable', false)
+            .modal('show')
+        ;
+    });
+    $('#submitCreateRol').on('click', function () {
+        $('#createRolFom').submit()
+    });
 });

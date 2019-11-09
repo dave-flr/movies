@@ -28,6 +28,13 @@ namespace movies.Areas.Dashboard.Controllers
 
         [Area("Dashboard")]
         [Authorize(Roles = "Admin, Editors")]
+        public IActionResult Enter()
+        {
+            return LocalRedirect("/Dashboard");
+        }
+        
+        [Area("Dashboard")]
+        [Authorize(Roles = "Admin, Editors")]
         public async Task<IActionResult> Index()
         {
             var adminViewModel = new AdminViewModel
@@ -57,6 +64,15 @@ namespace movies.Areas.Dashboard.Controllers
             }
 
             return View("Users", userListTables);
+        }
+
+        [Area("Dashboard")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateRol(string rolName = null)
+        {
+            var rol = new IdentityRole(rolName);
+            await _roleManager.CreateAsync(rol);
+            return LocalRedirect("/Dashboard");
         }
     }
 }

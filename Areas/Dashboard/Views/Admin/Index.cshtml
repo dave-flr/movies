@@ -25,7 +25,7 @@
                                                 <h4>Comments</h4>
                                             </span>
                                             @Model.CommentsCount Comments
-                                            <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
+                                            <a class="ui tiny disabled label simplelable"><i class="add icon"></i> Add</a>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                                 <h4>Movies</h4>
                                             </span>
                                             @Model.MoviesCount Movies
-                                            <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
+                                            <a class="ui tiny label simplelable"><i class="add icon"></i> Add</a>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,32 @@
                                                 <h4>Roles</h4>
                                             </span>
                                             @Model.RolesCount Roles
-                                            <a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
+                                            <a class="ui tiny label simplelable" id="showRolesModal"><i class="add icon"></i> Add</a>
+                                        </div>
+                                        <div class="ui small modal" id="addRolesModal">
+                                            <i class="close icon"></i>
+                                            <div class="header">
+                                                Create a New Role
+                                            </div>
+                                            <div class="content">
+                                                <div class="description">
+                                                    <form class="ui form" asp-area="Dashboard" asp-controller="Admin" asp-action="CreateRol" id="createRolFom">
+                                                        <div class="field">
+                                                            <label>Rol Name</label>
+                                                            <input type="text" name="rolName" id="rolName" placeholder="Rol Name">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <div class="ui black deny button">
+                                                    Cancel
+                                                </div>
+                                                <div class="ui positive right labeled icon button" id="submitCreateRol">
+                                                    Create
+                                                    <i class="checkmark icon"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +122,7 @@
                                                 <h4>Users</h4>
                                             </span>
                                             @Model.UserCount Users
-                                            <a class="ui tiny label simplelable"><i class="eye icon"></i> Detailsa</a>
+                                            <a class="ui tiny label disabled simplelable"><i class="add icon"></i> Add</a>
                                         </div>
                                     </div>
                                 </div>
