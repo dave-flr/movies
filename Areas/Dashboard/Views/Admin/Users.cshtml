@@ -1,4 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@inject RoleManager<IdentityRole> RoleManager
 @model List<movies.Areas.Dashboard.ViewModels.UserListTable>
+
+@{
+    var tags = new Dictionary<string, string> {{"Admin", "green"}, {"Editor", "blue"}, {"Moderator", "red"}, {"Supervisor", "yellow"}};
+}
 
 <!-- BEGIN CONTENT -->
 <div class="right floated thirteen wide computer sixteen wide phone column" id="content">
@@ -17,24 +23,39 @@
                             <table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>User Name</th>
                                     <th>Normalized User Name</th>
                                     <th>Email</th>
                                     <th>Email Confirmed</th>
                                     <th>Coments</th>
+                                    <th>Roles</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach (var user in @Model)
+                                @foreach (var user in Model)
                                 {
                                     <tr>
-                                        <td>@user.Users.Id</td>
                                         <td>@user.Users.UserName</td>
                                         <td>@user.Users.NormalizedUserName</td>
                                         <td>@user.Users.Email</td>
                                         <td>@user.Users.EmailConfirmed</td>
                                         <td>@user.CommentCount</td>
+                                        <td>
+                                            <div class="ui list">
+                                                @foreach (var rol in user.UserRoles)
+                                                {
+                                                    <a class="item">
+                                                        <div class="ui @tags[rol] horizontal label">@rol</div>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="ui icon button" data-email="@user.Users.Email">
+                                                <i class="pen icon"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                                 </tbody>
@@ -44,6 +65,34 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modals -->
+<div class="ui tiny modal" id="editUserRoles">
+    <div class="header">
+        Add or delete a rol
+    </div>
+    <div class="content">
+        <form asp-area="Dashboard" asp-controller="Admin" asp-action="EditUserRoles" method="post" id="sendRolesRequest">
+            <select name="rolesSelected" id="rolesSelected" multiple="" class="ui clearable multiple selection dropdown">
+                <option value="">Select Role</option>
+                @foreach (var rol in RoleManager.Roles.ToList())
+                {
+                    <option value="@rol.Name">@rol.Name</option>
+                }
+                <input type="hidden" name="email" id="emailToSend" value="">
+            </select>
+        </form>
+
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Cancel
+        </div>
+        <div class="ui positive right labeled icon button">
+            Add
+            <i class="checkmark icon"></i>
         </div>
     </div>
 </div>

@@ -67,4 +67,24 @@ $(document).ready(function () {
     $('#submitCreateRol').on('click', function () {
         $('#createRolFom').submit()
     });
+    var showModalButton = $('.ui.icon.button');
+    showModalButton.on('click', function () {
+        $('#emailToSend').val(showModalButton.attr('data-email'));
+        $('#editUserRoles')
+            .modal('setting', 'closable', false)
+            .modal('show')
+        ;
+        //DROPDOWNS
+        $('#rolesSelected')
+            .dropdown({
+                maxSelections: 3
+            })
+        ;
+    });
+
+    var sendEditRole = $('.ui.positive.right.labeled.icon.button');
+    sendEditRole.on('click', function () {
+        alert("Aquí activo el form")
+    })
+
 });

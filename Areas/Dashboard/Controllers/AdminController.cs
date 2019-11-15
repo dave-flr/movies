@@ -27,14 +27,14 @@ namespace movies.Areas.Dashboard.Controllers
         }
 
         [Area("Dashboard")]
-        [Authorize(Roles = "Admin, Editors")]
+        [Authorize(Roles = "Admin, Editor")]
         public IActionResult Enter()
         {
             return LocalRedirect("/Dashboard");
         }
         
         [Area("Dashboard")]
-        [Authorize(Roles = "Admin, Editors")]
+        [Authorize(Roles = "Admin, Editor")]
         public async Task<IActionResult> Index()
         {
             var adminViewModel = new AdminViewModel
@@ -48,7 +48,7 @@ namespace movies.Areas.Dashboard.Controllers
         }
 
         [Area("Dashboard")]
-        [Authorize(Roles = "Admin, Editors")]
+        [Authorize(Roles = "Admin, Editor")]
         public async Task<IActionResult> Users()
         {
             var userListTables = new List<UserListTable>();
@@ -58,7 +58,8 @@ namespace movies.Areas.Dashboard.Controllers
                 {
                     Users = user,
                     CommentCount = await _db.Comments
-                        .CountAsync(u => u.UserId == user.Id)
+                        .CountAsync(u => u.UserId == user.Id),
+                    UserRoles = await _userManager.GetRolesAsync(user),
                 };
                 userListTables.Add(userListTableModel);
             }
@@ -74,5 +75,25 @@ namespace movies.Areas.Dashboard.Controllers
             await _roleManager.CreateAsync(rol);
             return LocalRedirect("/Dashboard");
         }
+
+        [Area("Dashboard")]
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> EditUserRoles(List<string> roles, string email = null)
+        {
+            
+            return LocalRedirect("/Dashboard/Admin/User");
+        }
+
+//        [Area("Dashboard")]
+//        [Authorize(Roles = "Admin")]
+//        [HttpGet]
+//        public async Task<IActionResult> GetUserRoles(string email = null)
+//        {
+//            var user = await _userManager.FindByEmailAsync(email);
+//            if (user == null) return NotFound();
+//            var roles = await _userManager.GetRolesAsync(user);
+//            return Json(roles);
+//        }
     }
 }

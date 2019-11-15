@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using movies.Models;
 
 namespace movies.Areas.Dashboard.ViewModels
 {
@@ -8,5 +7,6 @@ namespace movies.Areas.Dashboard.ViewModels
     {
         public IdentityUser Users { get; set; }
         public int CommentCount { get; set; }
+        public IList<string> UserRoles { get; set; }
     }
 }
