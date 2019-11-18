@@ -67,10 +67,16 @@ $(document).ready(function () {
     $('#submitCreateRol').on('click', function () {
         $('#createRolFom').submit()
     });
+    
     var showModalButton = $('.ui.icon.button');
-    showModalButton.on('click', function () {
-        $('#emailToSend').val(showModalButton.attr('data-email'));
+    showModalButton.on('click', function (event) {
         $('#editUserRoles')
+            .modal({
+                onShow: function () {
+                    var button = event.currentTarget;
+                    $('#emailToSend').val(button.attributes['data-email'].value);
+                }
+            })
             .modal('setting', 'closable', false)
             .modal('show')
         ;
@@ -84,7 +90,7 @@ $(document).ready(function () {
 
     var sendEditRole = $('.ui.positive.right.labeled.icon.button');
     sendEditRole.on('click', function () {
-        alert("Aquí activo el form")
+        $('#sendRolesRequest').submit();
     })
 
 });

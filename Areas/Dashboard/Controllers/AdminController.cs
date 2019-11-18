@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal;
 using Microsoft.EntityFrameworkCore;
 using movies.Models;
 using movies.Areas.Dashboard.ViewModels;
@@ -32,7 +33,7 @@ namespace movies.Areas.Dashboard.Controllers
         {
             return LocalRedirect("/Dashboard");
         }
-        
+
         [Area("Dashboard")]
         [Authorize(Roles = "Admin, Editor")]
         public async Task<IActionResult> Index()
@@ -79,21 +80,24 @@ namespace movies.Areas.Dashboard.Controllers
         [Area("Dashboard")]
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditUserRoles(List<string> roles, string email = null)
+        public async Task<IActionResult> EditUserRoles(List<string> rolesSelected, string email = null)
         {
-            
-            return LocalRedirect("/Dashboard/Admin/User");
-        }
+            var user = await _userManager.FindByEmailAsync(email);
+            if (rolesSelected.Count == 0)
+            {
+                foreach (var rol in await _roleManager.Roles.ToListAsync())
+                {
+                    var result = await _userManager.RemoveFromRoleAsync(user, rol.Name);
+                }
+            }
 
-//        [Area("Dashboard")]
-//        [Authorize(Roles = "Admin")]
-//        [HttpGet]
-//        public async Task<IActionResult> GetUserRoles(string email = null)
-//        {
-//            var user = await _userManager.FindByEmailAsync(email);
-//            if (user == null) return NotFound();
-//            var roles = await _userManager.GetRolesAsync(user);
-//            return Json(roles);
-//        }
+            foreach (var rol in rolesSelected)
+            {
+                var roleToAssign = await _roleManager.FindByNameAsync(rol);
+                var assign = await _userManager.AddToRoleAsync(user, rol);
+            }
+
+            return RedirectToAction("Users");
+        }
     }
 }
