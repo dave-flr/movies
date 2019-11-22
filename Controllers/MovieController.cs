@@ -2,10 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movies.Models;
+using movies.ViewModels;
 
 namespace movies.Controllers
 {
@@ -24,6 +26,8 @@ namespace movies.Controllers
         public async Task<IActionResult> Id(int? id, int? rating, string description = null) //Show a Movie
         {
             if (id == null) return NotFound();
+            var dataPass = HttpContext.Session.GetString("TitleM");
+            ViewData["TitleM"] = dataPass;
             ViewData["rating"] = rating;
             ViewData["description"] = description;
             var movie = await FindMovie(id);
@@ -63,6 +67,25 @@ namespace movies.Controllers
                 .Include(c => c.Comments)
                 .ThenInclude(user => user.User)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IActionResult> AddToCart(int? id, string title = null)
+        {
+            if (title != null)
+            {
+                if (id == null) return NotFound();
+
+                HttpContext.Session.SetString("TitleM", title);
+                var titles = new ShoppingCart();
+                titles.Titles.Add(title);
+
+                var dataPass = HttpContext.Session.GetString("TitleM");
+                ViewData["TitleM"] = dataPass;
+                
+                var movie = await FindMovie(id);
+                return View("Movie", movie);
+            }
+            return NotFound();
         }
     }
 }

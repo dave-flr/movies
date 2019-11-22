@@ -214,4 +214,6 @@ $(document).ready(function () {
     $('#shoppingCart')
         .dropdown()
     ;
+    $('#shoppingCartAdd')
+        .dropdown();
 });

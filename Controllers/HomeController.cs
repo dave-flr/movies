@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movies.Models;
@@ -19,6 +20,9 @@ namespace movies.Controllers
 
         public async Task<IActionResult> Index(int page = 1)
         {
+            var dataPass = HttpContext.Session.GetString("TitleM");
+            ViewData["TitleM"] = dataPass;
+            
             const int moviesPerPage = 50;
             var listMovies = await _db.Movies.OrderBy(x => x.Id)
                 .Skip((page - 1) * moviesPerPage)
