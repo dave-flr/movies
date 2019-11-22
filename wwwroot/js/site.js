@@ -211,4 +211,7 @@ $(document).ready(function () {
             }
         })
     ;
+    $('#shoppingCart')
+        .dropdown()
+    ;
 });
